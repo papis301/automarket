@@ -102,10 +102,10 @@ $images = $stmtImg->fetchAll(PDO::FETCH_COLUMN);
                     <?= htmlspecialchars($product['phone']) ?>
                 </p>
 
-                <a href="contact_seller.php?user_id=<?= $product['user_id'] ?>&product_id=<?= $product['id'] ?>"
+                <!-- <a href="contact_seller.php?user_id=<?= $product['user_id'] ?>&product_id=<?= $product['id'] ?>"
                    class="btn btn-primary">
                    📞 Contacter
-                </a>
+                </a> -->
             <?php else: ?>
                 <p><em>Connectez-vous pour voir le numéro</em></p>
                 <a href="login.php" class="btn btn-warning">Se connecter</a>

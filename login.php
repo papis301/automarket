@@ -23,11 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['phone'] = $user['phone'];
             $_SESSION['role'] = $user['role'];
 
-            if ($user['role'] === 'admin') {
-                header("Location: admin_dashboard.php");
-            } else {
-                header("Location: dashboard.php");
-            }
+            if ($user['role'] === 'super_admin') {
+                    header("Location: superadmin_dashboard.php");
+                } 
+                elseif ($user['role'] === 'admin') {
+                    header("Location: admin_dashboard.php");
+                } 
+                else {
+                    header("Location: dashboard.php");
+                }
             exit;
 
         } else {

@@ -2,8 +2,11 @@
 session_start();
 require_once 'db.php';
 
-// 🔒 Vérifier admin
-if (!isset($_SESSION['user_id']) ) {
+
+
+// 🔒 accès uniquement admin + super_admin
+if (!isset($_SESSION['user_id']) || 
+   ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'super_admin')) {
     exit("Accès refusé");
 }
 
@@ -30,13 +33,22 @@ if (isset($_POST['update'])) {
 
 // 🗑️ SUPPRIMER
 if (isset($_GET['delete'])) {
+
     $id = intval($_GET['delete']);
 
-    $stmt = $pdo->prepare("DELETE FROM categories WHERE id=?");
-    $stmt->execute([$id]);
+    // 🔍 Vérifier si la catégorie est utilisée
+    $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM products WHERE category_id = ?");
+    $stmtCheck->execute([$id]);
+    $count = $stmtCheck->fetchColumn();
 
-    header("Location: categories.php");
-    exit;
+    if ($count > 0) {
+        $error = "❌ Impossible de supprimer : catégorie utilisée par des produits.";
+    } else {
+        $stmt = $pdo->prepare("DELETE FROM categories WHERE id=?");
+        $stmt->execute([$id]);
+
+        $success = "✅ Catégorie supprimée avec succès.";
+    }
 }
 
 // 📥 LISTE
@@ -54,6 +66,13 @@ $categories = $stmt->fetchAll();
 </head>
 
 <body class="bg-light">
+    <?php if (!empty($error)): ?>
+    <div class="alert alert-danger"><?= $error ?></div>
+<?php endif; ?>
+
+<?php if (!empty($success)): ?>
+    <div class="alert alert-success"><?= $success ?></div>
+<?php endif; ?>
 
 <div class="container mt-5">
 

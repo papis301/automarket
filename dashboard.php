@@ -47,7 +47,9 @@ body { background:#f5f5f5; }
 
     <a href="products.php" class="btn btn-primary">📦 Voir produits</a>
 
+    <?php if ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'super_admin'): ?>
     <a href="categories.php" class="btn btn-warning">📂 Catégories</a>
+<?php endif; ?>
 
     <a href="index.php" class="btn btn-dark">Accueil</a>
 

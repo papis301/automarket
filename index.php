@@ -31,7 +31,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Uren - Car Accessories Shop HTML Template</title>
+    <title>Auto Market</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -127,7 +127,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         </a>
                                     </li> -->
                                     <li class="contact-us_wrap">
-                                        <a href="tel://+123123321345"><i class="ion-android-call"></i>+123 321 345</a>
+                                        <a href="tel://+221 76 648 74 20"><i class="ion-android-call"></i>+221 76 648 74 20</a>
                                     </li>
                                 </ul>
                             </div>
@@ -261,7 +261,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </li>
                                     
                                     <li class="contact-us_wrap">
-                                        <a href="tel://+123123321345"><i class="ion-android-call"></i>+123 321 345</a>
+                                        <a href="tel://+221 76 648 74 20"><i class="ion-android-call"></i>+221 76 648 74 20</a>
                                     </li>
                                 </ul>
                             </div>
@@ -549,449 +549,78 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <!-- Featured Categories Area End Here -->
 
-        <!-- Begin Multiple Section Area 
+        <!-- Begin Multiple Section Area -->
         <div class="multiple-section_area bg--white_smoke">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-3">
-                        <div class="special-product_wrap img-hover-effect_area-2">
-                            <div class="section-title_area bg--white">
-                                <span>Special Offer Limited Time</span>
-                                <h3>Deal Of The Day</h3>
-                            </div>
-                            <div class="special-product_slider-2 uren-slick-slider slider-navigation_style-1 img-hover-effect_area" data-slick-options='{
-                        "slidesToShow": 1,
-                        "arrows" : true
-                        }' data-slick-responsive='[
-                            {"breakpoint":1200, "settings": {"slidesToShow": 3}},
-                            {"breakpoint":992, "settings": {"slidesToShow": 2}},
-                            {"breakpoint":768, "settings": {"slidesToShow": 1}},
-                            {"breakpoint":576, "settings": {"slidesToShow": 1}}
-                        ]'>
-                                <div class="slide-item">
-                                    <div class="inner-slide">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img class="primary-img" src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
-                                                    <img class="secondary-img" src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
-                                                </a>
-                                                <div class="sticker-area-2">
-                                                    <span class="sticker-2">-33%</span>
-                                                    <span class="sticker">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <div class="uren-countdown_area">
-                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
-                                                        <div class="countdown-wrap">
-                                                            <div class="countdown item-4" data-countdown="2020/09/01" data-format="short">
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time daysLeft"></span>
-                                                                    <span class="countdown__text daysText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time hoursLeft"></span>
-                                                                    <span class="countdown__text hoursText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time minsLeft"></span>
-                                                                    <span class="countdown__text minsText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time secsLeft"></span>
-                                                                    <span class="countdown__text secsText"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="product-name"><a href="single-product.html">Veniam officiis
-                                                            voluptates</a></h6>
-                                                    <div class="price-box">
-                                                        <span class="new-price new-price-2">$98.00</span>
-                                                        <span class="old-price">$146.00</span>
-                                                    </div>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
-                                                                class="ion-bag"></i>Add To Cart</a>
-                                                            </li>
-                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
-                                                                class="ion-android-favorite-outline"></i></a>
-                                                            </li>
-                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                                                class="ion-android-open"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="col-xl-12">
+    <div class="special-product_wrap img-hover-effect_area-2">
+
+        <div class="section-title_area bg--white">
+            <span>Nouveautés</span>
+            <h3>Produits récents</h3>
+        </div>
+
+        <div class="special-product_slider-2 uren-slick-slider slider-navigation_style-1 img-hover-effect_area"
+            data-slick-options='{
+                "slidesToShow": 4,
+                "arrows" : true
+            }'
+            data-slick-responsive='[
+                {"breakpoint":1200, "settings": {"slidesToShow": 3}},
+                {"breakpoint":992, "settings": {"slidesToShow": 2}},
+                {"breakpoint":768, "settings": {"slidesToShow": 1}}
+            ]'>
+
+            <?php foreach ($products as $p): ?>
+
+            <div class="slide-item">
+                <div class="inner-slide">
+                    <div class="single-product">
+
+                        <div class="product-img">
+                            <a href="product.php?id=<?= $p['id'] ?>">
+
+                                <?php if (!empty($p['main_image'])): ?>
+                                    <img class="primary-img"
+                                         src="<?= $p['main_image'] ?>"
+                                         alt="<?= htmlspecialchars($p['name']) ?>">
+                                <?php else: ?>
+                                    <img class="primary-img"
+                                         src="assets/images/no-image.png">
+                                <?php endif; ?>
+
+                            </a>
+                        </div>
+
+                        <div class="product-content">
+                            <div class="product-desc_info">
+
+                                <h6 class="product-name">
+                                    <a href="product.php?id=<?= $p['id'] ?>">
+                                        <?= htmlspecialchars($p['name']) ?>
+                                    </a>
+                                </h6>
+
+                                <div class="price-box">
+                                    <span class="new-price">
+                                        <?= number_format($p['price'], 0, ',', ' ') ?> FCFA
+                                    </span>
                                 </div>
-                                <div class="slide-item">
-                                    <div class="inner-slide">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img class="primary-img" src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
-                                                    <img class="secondary-img" src="assets/images/product/medium-size/5-2.jpg" alt="Uren's Product Image">
-                                                </a>
-                                                <div class="sticker-area-2">
-                                                    <span class="sticker-2">-10%</span>
-                                                    <span class="sticker">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <div class="uren-countdown_area">
-                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
-                                                        <div class="countdown-wrap">
-                                                            <div class="countdown item-4" data-countdown="2020/07/01" data-format="short">
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time daysLeft"></span>
-                                                                    <span class="countdown__text daysText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time hoursLeft"></span>
-                                                                    <span class="countdown__text hoursText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time minsLeft"></span>
-                                                                    <span class="countdown__text minsText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time secsLeft"></span>
-                                                                    <span class="countdown__text secsText"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="product-name"><a href="single-product.html">Accusantium corporis
-                                                            odio</a></h6>
-                                                    <div class="price-box">
-                                                        <span class="new-price new-price-2">$110.00</span>
-                                                        <span class="old-price">$122.00</span>
-                                                    </div>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
-                                                                class="ion-bag"></i>Add To Cart</a>
-                                                            </li>
-                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
-                                                                class="ion-android-favorite-outline"></i></a>
-                                                            </li>
-                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                                                class="ion-android-open"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide-item">
-                                    <div class="inner-slide">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img class="primary-img" src="assets/images/product/medium-size/6-1.jpg" alt="Uren's Product Image">
-                                                    <img class="secondary-img" src="assets/images/product/medium-size/6-2.jpg" alt="Uren's Product Image">
-                                                </a>
-                                                <div class="sticker-area-2">
-                                                    <span class="sticker-2">-15%</span>
-                                                    <span class="sticker">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <div class="uren-countdown_area">
-                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
-                                                        <div class="countdown-wrap">
-                                                            <div class="countdown item-4" data-countdown="2020/07/01" data-format="short">
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time daysLeft"></span>
-                                                                    <span class="countdown__text daysText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time hoursLeft"></span>
-                                                                    <span class="countdown__text hoursText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time minsLeft"></span>
-                                                                    <span class="countdown__text minsText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time secsLeft"></span>
-                                                                    <span class="countdown__text secsText"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="product-name"><a href="single-product.html">Accusantium corporis
-                                                            odio</a></h6>
-                                                    <div class="price-box">
-                                                        <span class="new-price new-price-2">$95.00</span>
-                                                        <span class="old-price">$120.00</span>
-                                                    </div>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
-                                                                class="ion-bag"></i>Add To Cart</a>
-                                                            </li>
-                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
-                                                                class="ion-android-favorite-outline"></i></a>
-                                                            </li>
-                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                                                class="ion-android-open"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide-item">
-                                    <div class="inner-slide">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img class="primary-img" src="assets/images/product/medium-size/8-1.jpg" alt="Uren's Product Image">
-                                                    <img class="secondary-img" src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
-                                                </a>
-                                                <div class="sticker-area-2">
-                                                    <span class="sticker-2">-5%</span>
-                                                    <span class="sticker">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <div class="uren-countdown_area">
-                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
-                                                        <div class="countdown-wrap">
-                                                            <div class="countdown item-4" data-countdown="2020/05/01" data-format="short">
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time daysLeft"></span>
-                                                                    <span class="countdown__text daysText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time hoursLeft"></span>
-                                                                    <span class="countdown__text hoursText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time minsLeft"></span>
-                                                                    <span class="countdown__text minsText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time secsLeft"></span>
-                                                                    <span class="countdown__text secsText"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="product-name"><a href="single-product.html">Accusantium corporis
-                                                            odio</a></h6>
-                                                    <div class="price-box">
-                                                        <span class="new-price new-price-2">$75.00</span>
-                                                        <span class="old-price">$80.00</span>
-                                                    </div>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
-                                                                class="ion-bag"></i>Add To Cart</a>
-                                                            </li>
-                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
-                                                                class="ion-android-favorite-outline"></i></a>
-                                                            </li>
-                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                                                class="ion-android-open"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide-item">
-                                    <div class="inner-slide">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img class="primary-img" src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
-                                                    <img class="secondary-img" src="assets/images/product/medium-size/3-2.jpg" alt="Uren's Product Image">
-                                                </a>
-                                                <div class="sticker-area-2">
-                                                    <span class="sticker-2">-5%</span>
-                                                    <span class="sticker">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <div class="uren-countdown_area">
-                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
-                                                        <div class="countdown-wrap">
-                                                            <div class="countdown item-4" data-countdown="2020/09/01" data-format="short">
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time daysLeft"></span>
-                                                                    <span class="countdown__text daysText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time hoursLeft"></span>
-                                                                    <span class="countdown__text hoursText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time minsLeft"></span>
-                                                                    <span class="countdown__text minsText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time secsLeft"></span>
-                                                                    <span class="countdown__text secsText"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="product-name"><a href="single-product.html">Possimus accusantium
-                                                            eius</a></h6>
-                                                    <div class="price-box">
-                                                        <span class="new-price new-price-2">$65.00</span>
-                                                        <span class="old-price">$75.00</span>
-                                                    </div>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
-                                                                class="ion-bag"></i>Add To Cart</a>
-                                                            </li>
-                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
-                                                                class="ion-android-favorite-outline"></i></a>
-                                                            </li>
-                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                                                class="ion-android-open"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide-item">
-                                    <div class="inner-slide">
-                                        <div class="single-product">
-                                            <div class="product-img">
-                                                <a href="single-product.html">
-                                                    <img class="primary-img" src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
-                                                    <img class="secondary-img" src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
-                                                </a>
-                                                <div class="sticker-area-2">
-                                                    <span class="sticker-2">-20%</span>
-                                                    <span class="sticker">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-desc_info">
-                                                    <div class="uren-countdown_area">
-                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
-                                                        <div class="countdown-wrap">
-                                                            <div class="countdown item-4" data-countdown="2020/04/01" data-format="short">
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time daysLeft"></span>
-                                                                    <span class="countdown__text daysText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time hoursLeft"></span>
-                                                                    <span class="countdown__text hoursText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time minsLeft"></span>
-                                                                    <span class="countdown__text minsText"></span>
-                                                                </div>
-                                                                <div class="countdown__item">
-                                                                    <span class="countdown__time secsLeft"></span>
-                                                                    <span class="countdown__text secsText"></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li><i class="ion-android-star"></i></li>
-                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="product-name"><a href="single-product.html">Autem provident
-                                                            consequatur</a></h6>
-                                                    <div class="price-box">
-                                                        <span class="new-price new-price-2">$90.00</span>
-                                                        <span class="old-price">$100.00</span>
-                                                    </div>
-                                                    <div class="add-actions">
-                                                        <ul>
-                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
-                                                                class="ion-bag"></i>Add To Cart</a>
-                                                            </li>
-                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
-                                                                class="ion-android-favorite-outline"></i></a>
-                                                            </li>
-                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
-                                                                class="ion-android-open"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
+
                     </div>
-                    <div class="col-xl-9">
+                </div>
+            </div>
+
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+</div>
+                    <!-- <div class="col-xl-9">
                         <div class="row">
                             <div class="col-xl-4">
                                 <div class="list-product_wrap img-hover-effect_area-2 bg--white">
@@ -1630,15 +1259,15 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-         Multiple Section Area End Here -->
+        <!-- Multiple Section Area End Here -->
 
         <!-- Begin Uren's Banner Area -->
-        <div class="uren-banner_area bg--white_smoke">
+        <!-- <div class="uren-banner_area bg--white_smoke">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
@@ -1673,14 +1302,14 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Uren's Banner Area End Here -->
 
         <!-- Begin Uren's Product Area -->
         <div class="uren-product_area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                         <div class="section-title_area">
                             <span>Top New On This Week</span>
                             <h3>New Arrivals Products</h3>
@@ -2054,7 +1683,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -2074,56 +1703,8 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                              {"breakpoint":481, "settings": {"slidesToShow": 1}},
                                              {"breakpoint":321, "settings": {"slidesToShow": 1}}
                                          ]'>
-                            <?php foreach ($products as $p): ?>
-
-<div class="slide-item">
-    <div class="inner-slide">
-        <div class="single-product">
-
-            <div class="product-img">
-                <a href="product_details.php?id=<?= $p['id'] ?>">
-
-                    <?php if($p['main_image']): ?>
-                        <img class="primary-img"
-                             src="<?= $p['main_image'] ?>"
-                             style="height:200px;object-fit:cover;">
-                    <?php else: ?>
-                        <img class="primary-img"
-                             src="assets/images/no-image.png">
-                    <?php endif; ?>
-
-                </a>
-
-                <div class="sticker">
-                    <span class="sticker">New</span>
-                </div>
-            </div>
-
-            <div class="product-content">
-                <div class="product-desc_info">
-
-                    <h6>
-                        <a class="product-name"
-                           href="product_details.php?id=<?= $p['id'] ?>">
-                           <?= htmlspecialchars($p['title']) ?>
-                        </a>
-                    </h6>
-
-                    <div class="price-box">
-                        <span class="new-price">
-                            <?= number_format($p['price'],0,',',' ') ?> FCFA
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<?php endforeach; ?>
-                            <div class="slide-item">
+                            
+                            <!-- <div class="slide-item">
                                 <div class="slide-inner">
                                     <div class="single-slide">
                                         <div class="slide-content">
@@ -2161,7 +1742,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -2173,7 +1754,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="uren-brand_area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                         <div class="section-title_area">
                             <span>Top Quality Partner</span>
                             <h3>Shop By Brands</h3>
@@ -2269,7 +1850,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -2391,7 +1972,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="newsletter-area">
+                            <!-- <div class="newsletter-area">
                                 <h3 class="title">Join Our Newsletter Now</h3>
                                 <p class="short-desc">Get E-mail updates about our latest shop and special offers.</p>
                                 <div class="newsletter-form_wrap">
@@ -2404,7 +1985,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -2420,18 +2001,16 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </a>
                                 </div>
                                 <div class="widget-short_desc">
-                                    <p>We are a team of designers and developers that create high quality HTML Template &
-                                        Woocommerce, Shopify Theme.
+                                    <p>AutoMarket est une marketplace automobile qui permet d’acheter et de vendre des véhicules et accessoires en ligne facilement. Parcourez les catégories, découvrez les meilleures offres et trouvez rapidement ce que vous cherchez.
                                     </p>
                                 </div>
                                 <div class="widgets-essential_stuff">
                                     <ul>
-                                        <li class="uren-address"><span>Address:</span> The Barn,
-                                            Ullenhall, Henley
-                                            in
-                                            Arden B578 5CC, England</li>
-                                        <li class="uren-phone"><span>Call
-                                        Us:</span> <a href="tel://+123123321345">+123 321 345</a>
+                                        <li class="uren-address"><span>Adresse:</span> 
+                                            
+                                            Rue 11 medina centenaire, Dakar</li>
+                                        <li class="uren-phone"><span>+221 76 648 74 20
+                                        SN:</span> <a href="tel://+221766487420">+221 76 648 74 20</a>
                                         </li>
                                         <li class="uren-email"><span>Email:</span> <a href="mailto://info@yourdomain.com">info@yourdomain.com</a></li>
                                     </ul>
@@ -2443,21 +2022,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <i class="fab fa-facebook"></i>
                                             </a>
                                         </li>
-                                        <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                <i class="fab fa-twitter-square"></i>
-                                            </a>
-                                        </li>
-                                        <li class="google-plus">
-                                            <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
-                                                <i class="fab fa-google-plus"></i>
-                                            </a>
-                                        </li>
-                                        <li class="instagram">
-                                            <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="Instagram">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -2528,7 +2093,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="copyright">
-                                    <span><a href="templateshub.net">Templateshub</a></span>
+                                    <span><a href=""></a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">

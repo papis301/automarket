@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </form>
 
-<a href="admin_dashboard.php" class="btn btn-dark mt-3">Retour</a>
+<a href="superadmin_dashboard.php" class="btn btn-dark mt-3">Retour</a>
 
 </div>
 

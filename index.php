@@ -3,14 +3,27 @@ session_start();
 require_once 'db.php';
 
 $stmt = $pdo->query("
-   SELECT p.*, 
-    (SELECT image_path FROM product_images WHERE product_id = p.id LIMIT 1) AS main_image
+    SELECT p.*, 
+    (SELECT image_path FROM product_images 
+     WHERE product_id = p.id 
+     ORDER BY id ASC LIMIT 1) AS main_image
     FROM products p
     ORDER BY p.id DESC
 ");
-$products = $stmt->fetchAll();
-?>
 
+$products = $stmt->fetchAll();
+
+
+$stmt = $pdo->query("
+    SELECT c.*, 
+    (SELECT COUNT(*) FROM products p WHERE p.category_id = c.id) as total_products
+    FROM categories c
+    ORDER BY id DESC
+");
+
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -70,7 +83,7 @@ $products = $stmt->fetchAll();
                     <div class="row">
                         <div class="col-xl-3 col-lg-2 col-md-3 col-sm-5">
                             <div class="header-logo_area">
-                                <a href="index.php">
+                                <a href="index.html">
                                     <img src="assets/images/menu/logo/2.png" alt="Uren's Logo">
                                 </a>
                             </div>
@@ -148,7 +161,7 @@ $products = $stmt->fetchAll();
                             <div class="main-menu_area position-relative">
                                 <nav class="main-nav">
                                     <ul>
-                                        <li class="dropdown-holder active"><a href="index.php">Home</a>
+                                        <li class="dropdown-holder active"><a href="index.html">Home</a>
                                             
                                         </li>
                                         <li class=""><a href="javascript:void(0)">Pages <i
@@ -179,8 +192,8 @@ $products = $stmt->fetchAll();
                                         <li><a href="my-account.html"><span class="fa fa-user"></span> <span>My
                                                 Account</span><i class="fa fa-chevron-down"></i></a>
                                             <ul class="ht-dropdown ht-my_account">
-                                                <li><a href="javascript:void(0)">Register</a></li>
-                                                <li class="active"><a href="javascript:void(0)">Login</a></li>
+                                                <li><a href="register.php">Register</a></li>
+                                                <li class="active"><a href="login.php">Login</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -214,7 +227,7 @@ $products = $stmt->fetchAll();
                             <div class="main-menu_area position-relative">
                                 <nav class="main-nav">
                                     <ul>
-                                        <li class="dropdown-holder active"><a href="index.php">Home</a>
+                                        <li class="dropdown-holder active"><a href="index.html">Home</a>
                                            
                                         </li>
                                         <li class="megamenu-holder "><a href="shop-left-sidebar.html">Shop
@@ -233,7 +246,7 @@ $products = $stmt->fetchAll();
                         </div>
                         <div class="col-sm-3 d-block d-lg-none">
                             <div class="header-logo_area header-sticky_logo">
-                                <a href="index.php">
+                                <a href="index.html">
                                     <img src="assets/images/menu/logo/3.png" alt="Uren's Logo">
                                 </a>
                             </div>
@@ -282,7 +295,7 @@ $products = $stmt->fetchAll();
                         </div>
                         <nav class="offcanvas-navigation">
                             <ul class="mobile-menu">
-                                <li class="menu-item-has-children active"><a href="index.php"><span
+                                <li class="menu-item-has-children active"><a href="index.html"><span
                                         class="mm-text">Home</span></a>
                                     
                                 </li>
@@ -307,7 +320,7 @@ $products = $stmt->fetchAll();
                                     
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="index.php">
+                                    <a href="index.html">
                                         <span class="mm-text">Pages</span>
                                     </a>
                                     <ul class="sub-menu">
@@ -317,7 +330,7 @@ $products = $stmt->fetchAll();
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="login-register.html">
+                                            <a href="login.php">
                                                 <span class="mm-text">Login | Register</span>
                                             </a>
                                         </li>
@@ -338,7 +351,7 @@ $products = $stmt->fetchAll();
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="login-register.html">
+                                            <a href="login.php">
                                                 <span class="mm-text">Login | Register</span>
                                             </a>
                                         </li>
@@ -353,52 +366,35 @@ $products = $stmt->fetchAll();
         <!-- Uren's Header Main Area End Here -->
 
         <div class="uren-slider_area uren-slider_area-3">
-    <div class="main-slider slider-navigation_style-2">
-
-        <div class="single-slide animation-style-01 bg-5">
-            <div class="slider-content text-center" style="max-width:700px;margin:auto">
-
-                <h2 style="color:#fff;font-size:40px;font-weight:bold;">
-                    Trouve ou vends ton produit avec une photo 📸
-                </h2>
-
-                <p style="color:#fff;">
-                    Upload une image pour rechercher ou vendre un produit rapidement
-                </p>
-
-                <!-- FORMULAIRE IMAGE -->
-                <form action="upload_search.php" method="POST" enctype="multipart/form-data" 
-                      style="margin-top:20px">
-
-                    <div style="background:#fff;padding:15px;border-radius:8px">
-                        <input type="file" name="image" required 
-                               class="form-control mb-2">
-
-                        <select name="type" class="form-control mb-2">
-                            <option value="search">🔍 Rechercher un produit</option>
-                            <option value="sell">💰 Vendre un produit</option>
-                        </select>
-
-                        <button class="btn btn-warning w-100">
-                            Continuer
-                        </button>
+            <div class="main-slider slider-navigation_style-2">
+                <!-- Begin Single Slide Area -->
+                <div class="single-slide animation-style-01 bg-5">
+                    <div class="slider-content">
+                        <span class="carlet-text_color">Save $120 when you buy</span>
+                        <h3>Wheels &amp; Tires</h3>
+                        <p class="short-desc">Explore and immerse in exciting 360 content withFulldive’s all-in-one virtual reality platform</p>
+                        <div class="uren-btn-ps_center slide-btn">
+                            <a class="uren-btn" href="shop-left-sidebar.html">Read More</a>
+                        </div>
                     </div>
-                </form>
-
-                <div style="margin-top:20px">
-                    <a href="add_product.php" class="uren-btn">
-                        Poster sans photo
-                    </a>
                 </div>
-
+                <!-- Single Slide Area End Here -->
+                <!-- Begin Single Slide Area -->
+                <div class="single-slide animation-style-02 bg-6">
+                    <div class="slider-content slider-content-2">
+                        <span class="carlet-text_color">We have the part you need</span>
+                        <h3>20% off Auto part</h3>
+                        <p class="short-desc">Explore and immerse in exciting 360 content withFulldive’s all-in-one virtual reality platform</p>
+                        <div class="uren-btn-ps_center slide-btn">
+                            <a class="uren-btn" href="shop-left-sidebar.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    </div>
-</div>
-
         <!-- Begin Uren's Banner Two Area -->
-        <div class="uren-banner_area uren-banner_area-4">
+        <!-- <div class="uren-banner_area uren-banner_area-4">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
@@ -424,7 +420,7 @@ $products = $stmt->fetchAll();
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Uren's Banner Two Area End Here -->
 
         <!-- Begin Uren's Shipping Area 
@@ -512,182 +508,1124 @@ $products = $stmt->fetchAll();
                                              {"breakpoint":576, "settings": {"slidesToShow": 2}},
                                              {"breakpoint":480, "settings": {"slidesToShow": 1}}
                                          ]'>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/1.png" alt="Uren's Featured Categories">
-                                            </a>
+                            <?php foreach ($categories as $cat): ?>
+<div class="slide-item">
+    <div class="slide-inner">
+        <div class="single-product">
+
+            <div class="slide-image_area">
+                <a href="shop.php?category=<?= $cat['id'] ?>">
+
+                    <?php if (!empty($cat['image'])): ?>
+                        <img src="uploads/categories/<?= $cat['image'] ?>" 
+                             alt="<?= htmlspecialchars($cat['name']) ?>">
+                    <?php else: ?>
+                        <img src="assets/images/no-image.png" alt="No image">
+                    <?php endif; ?>
+
+                </a>
+            </div>
+
+            <div class="slide-content_area">
+                <h3>
+                    <a href="shop.php?category=<?= $cat['id'] ?>">
+                        <?= htmlspecialchars($cat['name']) ?>
+                    </a>
+                </h3>
+
+                <span>(<?= $cat['total_products'] ?> Produits)</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Categories Area End Here -->
+
+        <!-- Begin Multiple Section Area 
+        <div class="multiple-section_area bg--white_smoke">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3">
+                        <div class="special-product_wrap img-hover-effect_area-2">
+                            <div class="section-title_area bg--white">
+                                <span>Special Offer Limited Time</span>
+                                <h3>Deal Of The Day</h3>
+                            </div>
+                            <div class="special-product_slider-2 uren-slick-slider slider-navigation_style-1 img-hover-effect_area" data-slick-options='{
+                        "slidesToShow": 1,
+                        "arrows" : true
+                        }' data-slick-responsive='[
+                            {"breakpoint":1200, "settings": {"slidesToShow": 3}},
+                            {"breakpoint":992, "settings": {"slidesToShow": 2}},
+                            {"breakpoint":768, "settings": {"slidesToShow": 1}},
+                            {"breakpoint":576, "settings": {"slidesToShow": 1}}
+                        ]'>
+                                <div class="slide-item">
+                                    <div class="inner-slide">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img class="primary-img" src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
+                                                    <img class="secondary-img" src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
+                                                </a>
+                                                <div class="sticker-area-2">
+                                                    <span class="sticker-2">-33%</span>
+                                                    <span class="sticker">New</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-desc_info">
+                                                    <div class="uren-countdown_area">
+                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
+                                                        <div class="countdown-wrap">
+                                                            <div class="countdown item-4" data-countdown="2020/09/01" data-format="short">
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time daysLeft"></span>
+                                                                    <span class="countdown__text daysText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time hoursLeft"></span>
+                                                                    <span class="countdown__text hoursText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time minsLeft"></span>
+                                                                    <span class="countdown__text minsText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time secsLeft"></span>
+                                                                    <span class="countdown__text secsText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h6 class="product-name"><a href="single-product.html">Veniam officiis
+                                                            voluptates</a></h6>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$98.00</span>
+                                                        <span class="old-price">$146.00</span>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                                class="ion-bag"></i>Add To Cart</a>
+                                                            </li>
+                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                            </li>
+                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                                class="ion-android-open"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Brakes & Rotors</a></h3>
-                                            <span>(8 Products)</span>
+                                    </div>
+                                </div>
+                                <div class="slide-item">
+                                    <div class="inner-slide">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img class="primary-img" src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
+                                                    <img class="secondary-img" src="assets/images/product/medium-size/5-2.jpg" alt="Uren's Product Image">
+                                                </a>
+                                                <div class="sticker-area-2">
+                                                    <span class="sticker-2">-10%</span>
+                                                    <span class="sticker">New</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-desc_info">
+                                                    <div class="uren-countdown_area">
+                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
+                                                        <div class="countdown-wrap">
+                                                            <div class="countdown item-4" data-countdown="2020/07/01" data-format="short">
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time daysLeft"></span>
+                                                                    <span class="countdown__text daysText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time hoursLeft"></span>
+                                                                    <span class="countdown__text hoursText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time minsLeft"></span>
+                                                                    <span class="countdown__text minsText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time secsLeft"></span>
+                                                                    <span class="countdown__text secsText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h6 class="product-name"><a href="single-product.html">Accusantium corporis
+                                                            odio</a></h6>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$110.00</span>
+                                                        <span class="old-price">$122.00</span>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                                class="ion-bag"></i>Add To Cart</a>
+                                                            </li>
+                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                            </li>
+                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                                class="ion-android-open"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slide-item">
+                                    <div class="inner-slide">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img class="primary-img" src="assets/images/product/medium-size/6-1.jpg" alt="Uren's Product Image">
+                                                    <img class="secondary-img" src="assets/images/product/medium-size/6-2.jpg" alt="Uren's Product Image">
+                                                </a>
+                                                <div class="sticker-area-2">
+                                                    <span class="sticker-2">-15%</span>
+                                                    <span class="sticker">New</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-desc_info">
+                                                    <div class="uren-countdown_area">
+                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
+                                                        <div class="countdown-wrap">
+                                                            <div class="countdown item-4" data-countdown="2020/07/01" data-format="short">
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time daysLeft"></span>
+                                                                    <span class="countdown__text daysText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time hoursLeft"></span>
+                                                                    <span class="countdown__text hoursText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time minsLeft"></span>
+                                                                    <span class="countdown__text minsText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time secsLeft"></span>
+                                                                    <span class="countdown__text secsText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h6 class="product-name"><a href="single-product.html">Accusantium corporis
+                                                            odio</a></h6>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$95.00</span>
+                                                        <span class="old-price">$120.00</span>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                                class="ion-bag"></i>Add To Cart</a>
+                                                            </li>
+                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                            </li>
+                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                                class="ion-android-open"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slide-item">
+                                    <div class="inner-slide">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img class="primary-img" src="assets/images/product/medium-size/8-1.jpg" alt="Uren's Product Image">
+                                                    <img class="secondary-img" src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
+                                                </a>
+                                                <div class="sticker-area-2">
+                                                    <span class="sticker-2">-5%</span>
+                                                    <span class="sticker">New</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-desc_info">
+                                                    <div class="uren-countdown_area">
+                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
+                                                        <div class="countdown-wrap">
+                                                            <div class="countdown item-4" data-countdown="2020/05/01" data-format="short">
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time daysLeft"></span>
+                                                                    <span class="countdown__text daysText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time hoursLeft"></span>
+                                                                    <span class="countdown__text hoursText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time minsLeft"></span>
+                                                                    <span class="countdown__text minsText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time secsLeft"></span>
+                                                                    <span class="countdown__text secsText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h6 class="product-name"><a href="single-product.html">Accusantium corporis
+                                                            odio</a></h6>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$75.00</span>
+                                                        <span class="old-price">$80.00</span>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                                class="ion-bag"></i>Add To Cart</a>
+                                                            </li>
+                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                            </li>
+                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                                class="ion-android-open"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slide-item">
+                                    <div class="inner-slide">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img class="primary-img" src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
+                                                    <img class="secondary-img" src="assets/images/product/medium-size/3-2.jpg" alt="Uren's Product Image">
+                                                </a>
+                                                <div class="sticker-area-2">
+                                                    <span class="sticker-2">-5%</span>
+                                                    <span class="sticker">New</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-desc_info">
+                                                    <div class="uren-countdown_area">
+                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
+                                                        <div class="countdown-wrap">
+                                                            <div class="countdown item-4" data-countdown="2020/09/01" data-format="short">
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time daysLeft"></span>
+                                                                    <span class="countdown__text daysText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time hoursLeft"></span>
+                                                                    <span class="countdown__text hoursText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time minsLeft"></span>
+                                                                    <span class="countdown__text minsText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time secsLeft"></span>
+                                                                    <span class="countdown__text secsText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h6 class="product-name"><a href="single-product.html">Possimus accusantium
+                                                            eius</a></h6>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$65.00</span>
+                                                        <span class="old-price">$75.00</span>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                                class="ion-bag"></i>Add To Cart</a>
+                                                            </li>
+                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                            </li>
+                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                                class="ion-android-open"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slide-item">
+                                    <div class="inner-slide">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img class="primary-img" src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
+                                                    <img class="secondary-img" src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
+                                                </a>
+                                                <div class="sticker-area-2">
+                                                    <span class="sticker-2">-20%</span>
+                                                    <span class="sticker">New</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-desc_info">
+                                                    <div class="uren-countdown_area">
+                                                        <span class="product-offer">Hurry up! Offer ends in:</span>
+                                                        <div class="countdown-wrap">
+                                                            <div class="countdown item-4" data-countdown="2020/04/01" data-format="short">
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time daysLeft"></span>
+                                                                    <span class="countdown__text daysText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time hoursLeft"></span>
+                                                                    <span class="countdown__text hoursText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time minsLeft"></span>
+                                                                    <span class="countdown__text minsText"></span>
+                                                                </div>
+                                                                <div class="countdown__item">
+                                                                    <span class="countdown__time secsLeft"></span>
+                                                                    <span class="countdown__text secsText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rating-box">
+                                                        <ul>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li><i class="ion-android-star"></i></li>
+                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h6 class="product-name"><a href="single-product.html">Autem provident
+                                                            consequatur</a></h6>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$90.00</span>
+                                                        <span class="old-price">$100.00</span>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul>
+                                                            <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i
+                                                                class="ion-bag"></i>Add To Cart</a>
+                                                            </li>
+                                                            <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                            </li>
+                                                            <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                                class="ion-android-open"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/2.png" alt="Uren's Featured Categories">
-                                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="list-product_wrap img-hover-effect_area-2 bg--white">
+                                    <div class="section-title_area bg--white">
+                                        <span>Top Featured On This Week</span>
+                                        <h3>Featured Products</h3>
+                                    </div>
+                                    <div class="list-product_slider uren-slick-slider slider-navigation_style-1 section-space_mn-30 img-hover-effect_area" data-slick-options='{
+                                "slidesToShow": 1,
+                                "arrows" : true,
+                                "rows": 4
+                               }' data-slick-responsive='[
+                                    {"breakpoint":1501, "settings": {"slidesToShow": 1}},
+                                    {"breakpoint":1200, "settings": {"slidesToShow": 2}},
+                                    {"breakpoint":768, "settings": {"slidesToShow": 1}}
+                               ]'>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                                perspiciatis magni</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$122.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Interior</a></h3>
-                                            <span>(0 Products)</span>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                                nisi non</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$150.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                                qui beatae</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$180.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Rem eveniet eum rerum
+                                                                est veniam</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$116.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/1-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                                perspiciatis magni</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$122.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                                nisi non</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$150.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/3-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                                qui beatae</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$180.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Accusamus dicta odio
+                                                                magni cumque</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$116.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                                perspiciatis magni</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$122.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                                nisi non</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$150.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/3.png" alt="Uren's Featured Categories">
-                                            </a>
-                                        </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Lighting</a></h3>
-                                            <span>(8 Products)</span>
-                                        </div>
+                            
+                            <div class="col-xl-4">
+                                <div class="list-product_wrap img-hover-effect_area-2 bg--white">
+                                    <div class="section-title_area bg--white">
+                                        <span>On-Sale On This Week</span>
+                                        <h3>On-Sale Products</h3>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/4.png" alt="Uren's Featured Categories">
-                                            </a>
+                                    <div class="list-product_slider uren-slick-slider slider-navigation_style-1 img-hover-effect_area" data-slick-options='{
+                                "slidesToShow": 1,
+                                "arrows" : true,
+                                "rows": 4
+                               }' data-slick-responsive='[
+                                    {"breakpoint":1501, "settings": {"slidesToShow": 1}},
+                                    {"breakpoint":1200, "settings": {"slidesToShow": 2}},
+                                    {"breakpoint":768, "settings": {"slidesToShow": 1}}
+                                                 ]'>
+                                        <?php foreach ($products as $p): ?>
+
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+
+                                                    <div class="product-img">
+                                                        <a href="product_details.php?id=<?= $p['id'] ?>">
+
+                                                            <?php if($p['main_image']): ?>
+                                                                <img class="primary-img"
+                                                                    src="<?= $p['main_image'] ?>"
+                                                                    style="height:200px;object-fit:cover;">
+                                                            <?php else: ?>
+                                                                <img class="primary-img"
+                                                                    src="assets/images/no-image.png">
+                                                            <?php endif; ?>
+
+                                                        </a>
+
+                                                        <div class="sticker">
+                                                            <span class="sticker">New</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-content">
+                                                        <div class="product-desc_info">
+
+                                                            <h6>
+                                                                <a class="product-name"
+                                                                href="product_details.php?id=<?= $p['id'] ?>">
+                                                                <?= htmlspecialchars($p['title']) ?>
+                                                                </a>
+                                                            </h6>
+
+                                                            <div class="price-box">
+                                                                <span class="new-price">
+                                                                    <?= number_format($p['price'],0,',',' ') ?> FCFA
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Perfomance</a></h3>
-                                            <span>(13 Products)</span>
+
+                                        <?php endforeach; ?>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Accusamus dicta odio
+                                                                magni cumque</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$116.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/5.png" alt="Uren's Featured Categories">
-                                            </a>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/1-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                                perspiciatis magni</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$122.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Suspension Systems</a></h3>
-                                            <span>(15 Products)</span>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                                nisi non</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$150.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/6.png" alt="Uren's Featured Categories">
-                                            </a>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                                perspiciatis magni</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$122.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Wheels & Tires</a></h3>
-                                            <span>(13 Products)</span>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                                nisi non</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$150.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/1.png" alt="Uren's Featured Categories">
-                                            </a>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                                qui beatae</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$180.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Brakes & Rotors</a></h3>
-                                            <span>(8 Products)</span>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Rem eveniet eum rerum
+                                                                est veniam</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$116.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/2.png" alt="Uren's Featured Categories">
-                                            </a>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li class="silver-color"><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                                nisi non</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$150.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Interior</a></h3>
-                                            <span>(0 Products)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/3.png" alt="Uren's Featured Categories">
-                                            </a>
-                                        </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Lighting</a></h3>
-                                            <span>(8 Products)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/4.png" alt="Uren's Featured Categories">
-                                            </a>
-                                        </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Perfomance</a></h3>
-                                            <span>(13 Products)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/5.png" alt="Uren's Featured Categories">
-                                            </a>
-                                        </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Suspension Systems</a></h3>
-                                            <span>(15 Products)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-product">
-                                        <div class="slide-image_area">
-                                            <a href="shop-left-sidebar.html">
-                                                <img src="assets/images/featured-categories/6.png" alt="Uren's Featured Categories">
-                                            </a>
-                                        </div>
-                                        <div class="slide-content_area">
-                                            <h3><a href="shop-left-sidebar.html">Wheels & Tires</a></h3>
-                                            <span>(13 Products)</span>
+                                        <div class="slide-item">
+                                            <div class="inner-slide">
+                                                <div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="shop-left-sidebar.html">
+                                                            <img src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <div class="rating-box">
+                                                            <ul>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                                <li><i class="ion-android-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                        <h3 class="product-name">
+                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                                qui beatae</a>
+                                                        </h3>
+                                                        <div class="price-box">
+                                                            <span class="new-price">$180.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -697,11 +1635,7 @@ $products = $stmt->fetchAll();
                 </div>
             </div>
         </div>
-        <!-- Featured Categories Area End Here -->
-
-        <!-- Begin Multiple Section Area -->
-        
-        <!-- Multiple Section Area End Here -->
+         Multiple Section Area End Here -->
 
         <!-- Begin Uren's Banner Area -->
         <div class="uren-banner_area bg--white_smoke">
@@ -1140,24 +2074,55 @@ $products = $stmt->fetchAll();
                                              {"breakpoint":481, "settings": {"slidesToShow": 1}},
                                              {"breakpoint":321, "settings": {"slidesToShow": 1}}
                                          ]'>
-                            <div class="slide-item">
-                                <div class="slide-inner">
-                                    <div class="single-slide">
-                                        <div class="slide-content">
-                                            <span class="primary-text_color">What’s Client Says</span>
-                                            <h3 class="user-name">Rebecka Filson</h3>
-                                            <div class="comment-box">
-                                                <p class="user-feedback">“ Code, template and others are very good. The support has served me immediately and solved my problems when I need help. Are to be congratulated. Att Renan Andrade. ”</p>
-                                            </div>
-                                        </div>
-                                        <div class="slide-image">
-                                            <a href="javascript:void(0)">
-                                                <img src="assets/images/testimonial/user/1.png" alt="Uren's Testimonial Image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php foreach ($products as $p): ?>
+
+<div class="slide-item">
+    <div class="inner-slide">
+        <div class="single-product">
+
+            <div class="product-img">
+                <a href="product_details.php?id=<?= $p['id'] ?>">
+
+                    <?php if($p['main_image']): ?>
+                        <img class="primary-img"
+                             src="<?= $p['main_image'] ?>"
+                             style="height:200px;object-fit:cover;">
+                    <?php else: ?>
+                        <img class="primary-img"
+                             src="assets/images/no-image.png">
+                    <?php endif; ?>
+
+                </a>
+
+                <div class="sticker">
+                    <span class="sticker">New</span>
+                </div>
+            </div>
+
+            <div class="product-content">
+                <div class="product-desc_info">
+
+                    <h6>
+                        <a class="product-name"
+                           href="product_details.php?id=<?= $p['id'] ?>">
+                           <?= htmlspecialchars($p['title']) ?>
+                        </a>
+                    </h6>
+
+                    <div class="price-box">
+                        <span class="new-price">
+                            <?= number_format($p['price'],0,',',' ') ?> FCFA
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php endforeach; ?>
                             <div class="slide-item">
                                 <div class="slide-inner">
                                     <div class="single-slide">
@@ -1310,15 +2275,115 @@ $products = $stmt->fetchAll();
         </div>
         <!-- Uren's Brand Area End Here -->
 
-        <!-- Begin Uren's Blog Area -->
+        <!-- Begin Uren's Blog Area 
         <div class="uren-blog_area bg--white_smoke">
             <div class="container-fluid">
                 <div class="row">
-                    
+                    <div class="col-lg-12">
+                        <div class="section-title_area">
+                            <span>Our Recent Posts</span>
+                            <h3>From Our Blogs</h3>
+                        </div>
+                        <div class="blog-slider uren-slick-slider slider-navigation_style-1" data-slick-options='{
+                        "slidesToShow": 4,
+                        "spaceBetween": 30,
+                        "arrows" : true
+                        }' data-slick-responsive='[
+                            {"breakpoint":1200, "settings": {"slidesToShow": 3}},
+                            {"breakpoint":992, "settings": {"slidesToShow": 2}},
+                            {"breakpoint":768, "settings": {"slidesToShow": 2}},
+                            {"breakpoint":576, "settings": {"slidesToShow": 1}}
+                        ]'>
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="blog-img img-hover_effect">
+                                        <a href="blog-details-left-sidebar.html">
+                                            <img src="assets/images/blog/large-size/1.jpg" alt="Uren's Blog Image">
+                                        </a>
+                                        <span class="post-date">12-09-19</span>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-details-left-sidebar.html">Quaerat eligendi dolores autem omnis sed</a></h3>
+                                        <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="blog-img img-hover_effect">
+                                        <a href="blog-details-left-sidebar.html">
+                                            <img src="assets/images/blog/large-size/2.jpg" alt="Uren's Blog Image">
+                                        </a>
+                                        <span class="post-date">15-09-19</span>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-details-left-sidebar.html">Nulla voluptatum maiores dolorem nobis</a></h3>
+                                        <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="blog-img img-hover_effect">
+                                        <a href="blog-details-left-sidebar.html">
+                                            <img src="assets/images/blog/large-size/3.jpg" alt="Uren's Blog Image">
+                                        </a>
+                                        <span class="post-date">19-09-19</span>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-details-left-sidebar.html">Laudantium minus excepturi expedita dolore</a></h3>
+                                        <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="blog-img img-hover_effect">
+                                        <a href="blog-details-left-sidebar.html">
+                                            <img src="assets/images/blog/large-size/4.jpg" alt="Uren's Blog Image">
+                                        </a>
+                                        <span class="post-date">16-09-19</span>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-details-left-sidebar.html">Aliquam nihil dolorem beatae totam tempora</a></h3>
+                                        <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="blog-img img-hover_effect">
+                                        <a href="blog-details-left-sidebar.html">
+                                            <img src="assets/images/blog/large-size/5.jpg" alt="Uren's Blog Image">
+                                        </a>
+                                        <span class="post-date">20-09-19</span>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-details-left-sidebar.html">Reprehenderit illum iusto sit asperiores</a></h3>
+                                        <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-item">
+                                <div class="inner-slide">
+                                    <div class="blog-img img-hover_effect">
+                                        <a href="blog-details-left-sidebar.html">
+                                            <img src="assets/images/blog/large-size/6.jpg" alt="Uren's Blog Image">
+                                        </a>
+                                        <span class="post-date">25-09-19</span>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="blog-details-left-sidebar.html">Corrupti, dolore tempore totam voluptate</a></h3>
+                                        <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Uren's Blog Area End Here -->
+        Uren's Blog Area End Here -->
 
         <!-- Begin Uren's Footer Area -->
         <div class="uren-footer_area">
@@ -1327,10 +2392,17 @@ $products = $stmt->fetchAll();
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="newsletter-area">
-                                <h3 class="title"></h3>
-                                <p class="short-desc"></p>
+                                <h3 class="title">Join Our Newsletter Now</h3>
+                                <p class="short-desc">Get E-mail updates about our latest shop and special offers.</p>
                                 <div class="newsletter-form_wrap">
-                                    
+                                    <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="newsletters-form validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll">
+                                            <div id="mc-form" class="mc-form subscribe-form">
+                                                <input id="mc-email" class="newsletter-input" type="email" autocomplete="off" placeholder="Enter your email" />
+                                                <button class="newsletter-btn" id="mc-submit">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1390,7 +2462,7 @@ $products = $stmt->fetchAll();
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-8">
+                        <!-- <div class="col-lg-8">
                             <div class="footer-widgets_area">
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6">
@@ -1446,7 +2518,7 @@ $products = $stmt->fetchAll();
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

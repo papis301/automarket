@@ -83,7 +83,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                         <div class="col-xl-3 col-lg-2 col-md-3 col-sm-5">
                             <div class="header-logo_area">
-                                <a href="index.html">
+                                <a href="index.php">
                                     <img src="assets/images/menu/logo/2.png" alt="Uren's Logo">
                                 </a>
                             </div>
@@ -148,10 +148,10 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
-                                        <li><a href="shop-left-sidebar.html">Body Parts</a></li>
-                                        <li><a href="shop-left-sidebar.html">Interior</a></li>
-                                        <li><a href="shop-left-sidebar.html">Audio</a></li>
-                                        <li><a href="shop-left-sidebar.html">End Tables</a></li>
+                                        <li><a href="shop-left-sidebar">Body Parts</a></li>
+                                        <li><a href="shop-left-sidebar">Interior</a></li>
+                                        <li><a href="shop-left-sidebar">Audio</a></li>
+                                        <li><a href="shop-left-sidebar">End Tables</a></li>
                                         
                                     </ul>
                                 </div>
@@ -161,24 +161,17 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="main-menu_area position-relative">
                                 <nav class="main-nav">
                                     <ul>
-                                        <li class="dropdown-holder active"><a href="index.html">Home</a>
+                                        <li class="dropdown-holder active"><a href="index.php">Accueil</a>
                                             
                                         </li>
-                                        <li class=""><a href="javascript:void(0)">Pages <i
+                                        <li class=""><a href="javascript:void(0)">Compte <i
                                                 class="ion-ios-arrow-down"></i></a>
                                             <ul class="hm-dropdown">
-                                                <li><a href="my-account.html">My Account</a></li>
-                                                <li><a href="login-register.html">Login | Register</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="compare.html">Compare</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="404.html">404 Error</a></li>
+                                                <li><a href="login.php">Login | Register</a></li>
+                                                
                                             </ul>
                                         </li>
-                                        <li class=""><a href="about-us.html">About Us</a></li>
-                                        <li class=""><a href="contact.html">Contact</a></li>
+                                        <li class=""><a href="contact">Contact</a></li>
                                        
                                     </ul>
                                 </nav>
@@ -189,7 +182,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="ht-menu">
                                     <ul>
                                        
-                                        <li><a href="my-account.html"><span class="fa fa-user"></span> <span>My
+                                        <li><a href="my-account"><span class="fa fa-user"></span> <span>My
                                                 Account</span><i class="fa fa-chevron-down"></i></a>
                                             <ul class="ht-dropdown ht-my_account">
                                                 <li><a href="register.php">Register</a></li>
@@ -226,27 +219,26 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-xl-8 col-lg-7 d-lg-block d-none">
                             <div class="main-menu_area position-relative">
                                 <nav class="main-nav">
-                                    <ul>
-                                        <li class="dropdown-holder active"><a href="index.html">Home</a>
-                                           
+                                     <ul>
+                                        <li class="dropdown-holder active"><a href="index.php">Accueil</a>
+                                            
                                         </li>
-                                        <li class="megamenu-holder "><a href="shop-left-sidebar.html">Shop
-                                                <i class="ion-ios-arrow-down"></i></a>
-                                            <ul class="hm-megamenu">
-                                              
+                                        <li class=""><a href="javascript:void(0)">Compte <i
+                                                class="ion-ios-arrow-down"></i></a>
+                                            <ul class="hm-dropdown">
+                                                <li><a href="login.php">Login | Register</a></li>
+                                                
                                             </ul>
                                         </li>
+                                        <li class=""><a href="contact">Contact</a></li>
                                        
-                                        <li class=""><a href="about-us.html">About Us</a></li>
-                                        <li class=""><a href="contact.html">Contact</a></li>
-                                        
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-sm-3 d-block d-lg-none">
                             <div class="header-logo_area header-sticky_logo">
-                                <a href="index.html">
+                                <a href="index.php">
                                     <img src="assets/images/menu/logo/3.png" alt="Uren's Logo">
                                 </a>
                             </div>
@@ -295,48 +287,20 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <nav class="offcanvas-navigation">
                             <ul class="mobile-menu">
-                                <li class="menu-item-has-children active"><a href="index.html"><span
-                                        class="mm-text">Home</span></a>
-                                    
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="shop-left-sidebar.html">
-                                        <span class="mm-text">Shop</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                      
-                                        <li class="menu-item-has-children">
-                                            <a href="single-product.html">
-                                                <span class="mm-text">Single Product Type</span>
-                                            </a>
+                               
+                                        <li class="dropdown-holder active"><a href="index.php">Accueil</a>
                                             
                                         </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="blog-left-sidebar.html">
-                                        <span class="mm-text">Blog</span>
-                                    </a>
-                                    
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="index.html">
-                                        <span class="mm-text">Pages</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="my-account.html">
-                                                <span class="mm-text">My Account</span>
-                                            </a>
+                                        <li class=""><a href="javascript:void(0)">Compte <i
+                                                class="ion-ios-arrow-down"></i></a>
+                                            <ul class="hm-dropdown">
+                                                <li><a href="login.php">Login | Register</a></li>
+                                                
+                                            </ul>
                                         </li>
-                                        <li>
-                                            <a href="login.php">
-                                                <span class="mm-text">Login | Register</span>
-                                            </a>
-                                        </li>
+                                        <li class=""><a href="contact">Contact</a></li>
                                        
-                                    </ul>
-                                </li>
+                                    
                             </ul>
                         </nav>
                         <nav class="offcanvas-navigation user-setting_area">
@@ -346,7 +310,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         Setting</span></a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="my-account.html">
+                                            <a href="my-account">
                                                 <span class="mm-text">My Account</span>
                                             </a>
                                         </li>
@@ -374,7 +338,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <h3>Wheels &amp; Tires</h3>
                         <p class="short-desc">Explore and immerse in exciting 360 content withFulldive’s all-in-one virtual reality platform</p>
                         <div class="uren-btn-ps_center slide-btn">
-                            <a class="uren-btn" href="shop-left-sidebar.html">Read More</a>
+                            <a class="uren-btn" href="shop-left-sidebar">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -386,7 +350,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <h3>20% off Auto part</h3>
                         <p class="short-desc">Explore and immerse in exciting 360 content withFulldive’s all-in-one virtual reality platform</p>
                         <div class="uren-btn-ps_center slide-btn">
-                            <a class="uren-btn" href="shop-left-sidebar.html">Read More</a>
+                            <a class="uren-btn" href="shop-left-sidebar">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -399,21 +363,21 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="banner-item img-hover_effect">
-                            <a href="shop-left-sidebar.html">
+                            <a href="shop-left-sidebar">
                                 <img class="img-full" src="assets/images/banner/3-1.jpg" alt="Uren's Banner">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="banner-item img-hover_effect">
-                            <a href="shop-left-sidebar.html">
+                            <a href="shop-left-sidebar">
                                 <img class="img-full" src="assets/images/banner/3-2.jpg" alt="Uren's Banner">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="banner-item img-hover_effect">
-                            <a href="shop-left-sidebar.html">
+                            <a href="shop-left-sidebar">
                                 <img class="img-full" src="assets/images/banner/3-3.jpg" alt="Uren's Banner">
                             </a>
                         </div>
@@ -641,7 +605,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -656,7 +620,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                            <a href="shop-left-sidebar">Nam vitae autem quo
                                                                 perspiciatis magni</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -670,7 +634,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -685,7 +649,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                            <a href="shop-left-sidebar">Quasi maxime pariatur
                                                                 nisi non</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -699,7 +663,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -714,7 +678,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                            <a href="shop-left-sidebar">Quos iure similique
                                                                 qui beatae</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -728,7 +692,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -743,7 +707,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Rem eveniet eum rerum
+                                                            <a href="shop-left-sidebar">Rem eveniet eum rerum
                                                                 est veniam</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -757,7 +721,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/1-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -772,7 +736,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                            <a href="shop-left-sidebar">Nam vitae autem quo
                                                                 perspiciatis magni</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -786,7 +750,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -801,7 +765,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                            <a href="shop-left-sidebar">Quasi maxime pariatur
                                                                 nisi non</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -815,7 +779,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/3-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -830,7 +794,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                            <a href="shop-left-sidebar">Quos iure similique
                                                                 qui beatae</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -844,7 +808,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -859,7 +823,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Accusamus dicta odio
+                                                            <a href="shop-left-sidebar">Accusamus dicta odio
                                                                 magni cumque</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -873,7 +837,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -888,7 +852,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                            <a href="shop-left-sidebar">Nam vitae autem quo
                                                                 perspiciatis magni</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -902,7 +866,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -917,7 +881,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                            <a href="shop-left-sidebar">Quasi maxime pariatur
                                                                 nisi non</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -999,7 +963,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1014,7 +978,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Accusamus dicta odio
+                                                            <a href="shop-left-sidebar">Accusamus dicta odio
                                                                 magni cumque</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1028,7 +992,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/1-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1043,7 +1007,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                            <a href="shop-left-sidebar">Nam vitae autem quo
                                                                 perspiciatis magni</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1057,7 +1021,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1072,7 +1036,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                            <a href="shop-left-sidebar">Quasi maxime pariatur
                                                                 nisi non</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1086,7 +1050,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1101,7 +1065,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Nam vitae autem quo
+                                                            <a href="shop-left-sidebar">Nam vitae autem quo
                                                                 perspiciatis magni</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1115,7 +1079,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1130,7 +1094,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                            <a href="shop-left-sidebar">Quasi maxime pariatur
                                                                 nisi non</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1144,7 +1108,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1159,7 +1123,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                            <a href="shop-left-sidebar">Quos iure similique
                                                                 qui beatae</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1173,7 +1137,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1188,7 +1152,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Rem eveniet eum rerum
+                                                            <a href="shop-left-sidebar">Rem eveniet eum rerum
                                                                 est veniam</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1202,7 +1166,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1217,7 +1181,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quasi maxime pariatur
+                                                            <a href="shop-left-sidebar">Quasi maxime pariatur
                                                                 nisi non</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1231,7 +1195,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="inner-slide">
                                                 <div class="single-product">
                                                     <div class="product-img">
-                                                        <a href="shop-left-sidebar.html">
+                                                        <a href="shop-left-sidebar">
                                                             <img src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
                                                         </a>
                                                     </div>
@@ -1246,7 +1210,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             </ul>
                                                         </div>
                                                         <h3 class="product-name">
-                                                            <a href="shop-left-sidebar.html">Quos iure similique
+                                                            <a href="shop-left-sidebar">Quos iure similique
                                                                 qui beatae</a>
                                                         </h3>
                                                         <div class="price-box">
@@ -1280,7 +1244,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <p>Explore and immerse in exciting 360 content with
                                     Fulldive’s all-in-one virtual reality platform</p>
                                 <div class="uren-btn-ps_left">
-                                    <a class="uren-btn" href="shop-left-sidebar.html">Shop Now</a>
+                                    <a class="uren-btn" href="shop-left-sidebar">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -1295,7 +1259,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <p>Explore and immerse in exciting 360 content with
                                     Fulldive’s all-in-one virtual reality platform</p>
                                 <div class="uren-btn-ps_left">
-                                    <a class="uren-btn" href="shop-left-sidebar.html">Shop Now</a>
+                                    <a class="uren-btn" href="shop-left-sidebar">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -1328,7 +1292,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/1-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/1-2.jpg" alt="Uren's Product Image">
                                             </a>
@@ -1337,11 +1301,11 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1360,7 +1324,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Veniam officiis voluptates</a></h6>
+                                                <h6><a class="product-name" href="single-product">Veniam officiis voluptates</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price">$122.00</span>
                                                 </div>
@@ -1373,7 +1337,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/2-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/2-2.jpg" alt="Uren's Product Image">
                                             </a>
@@ -1383,11 +1347,11 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1406,7 +1370,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Corporis sed excepturi</a></h6>
+                                                <h6><a class="product-name" href="single-product">Corporis sed excepturi</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price new-price-2">$194.00</span>
                                                     <span class="old-price">$241.00</span>
@@ -1420,18 +1384,18 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/3-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/3-2.jpg" alt="Uren's Product Image">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1450,7 +1414,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Quidem iusto sapiente</a></h6>
+                                                <h6><a class="product-name" href="single-product">Quidem iusto sapiente</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price">$175.00</span>
                                                 </div>
@@ -1463,7 +1427,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/4-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/4-2.jpg" alt="Uren's Product Image">
                                             </a>
@@ -1473,11 +1437,11 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1496,7 +1460,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Ullam excepturi nesciunt</a></h6>
+                                                <h6><a class="product-name" href="single-product">Ullam excepturi nesciunt</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price new-price-2">$145.00</span>
                                                     <span class="old-price">$190.00</span>
@@ -1510,18 +1474,18 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/5-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/5-2.jpg" alt="Uren's Product Image">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1540,7 +1504,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Minus ipsam rerum</a></h6>
+                                                <h6><a class="product-name" href="single-product">Minus ipsam rerum</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price">$130.00</span>
                                                 </div>
@@ -1553,7 +1517,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/6-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/6-2.jpg" alt="Uren's Product Image">
                                             </a>
@@ -1563,11 +1527,11 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1586,7 +1550,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Labore aliquid eos</a></h6>
+                                                <h6><a class="product-name" href="single-product">Labore aliquid eos</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price new-price-2">$240.00</span>
                                                     <span class="old-price">$320.00</span>
@@ -1600,18 +1564,18 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/7-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/7-2.jpg" alt="Uren's Product Image">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1630,7 +1594,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li class="silver-color"><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Enim nobis numquam</a></h6>
+                                                <h6><a class="product-name" href="single-product">Enim nobis numquam</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price">$190.00</span>
                                                 </div>
@@ -1643,18 +1607,18 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="single-product">
                                                 <img class="primary-img" src="assets/images/product/medium-size/8-1.jpg" alt="Uren's Product Image">
                                                 <img class="secondary-img" src="assets/images/product/medium-size/1-2.jpg" alt="Uren's Product Image">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="add-actions">
                                                 <ul>
-                                                    <li><a class="uren-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <li><a class="uren-add_cart" href="cart" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
                                                     </li>
-                                                    <li><a class="uren-wishlist" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <li><a class="uren-wishlist" href="wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a>
                                                     </li>
-                                                    <li><a class="uren-add_compare" href="compare.html" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                    <li><a class="uren-add_compare" href="compare" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
                                                             class="ion-android-options"></i></a>
                                                     </li>
                                                     <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
@@ -1673,7 +1637,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                         <li><i class="ion-android-star"></i></li>
                                                     </ul>
                                                 </div>
-                                                <h6><a class="product-name" href="single-product.html">Dolorem voluptates aut</a></h6>
+                                                <h6><a class="product-name" href="single-product">Dolorem voluptates aut</a></h6>
                                                 <div class="price-box">
                                                     <span class="new-price">$250.00</span>
                                                 </div>
@@ -1878,13 +1842,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="slide-item">
                                 <div class="inner-slide">
                                     <div class="blog-img img-hover_effect">
-                                        <a href="blog-details-left-sidebar.html">
+                                        <a href="blog-details-left-sidebar">
                                             <img src="assets/images/blog/large-size/1.jpg" alt="Uren's Blog Image">
                                         </a>
                                         <span class="post-date">12-09-19</span>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="blog-details-left-sidebar.html">Quaerat eligendi dolores autem omnis sed</a></h3>
+                                        <h3><a href="blog-details-left-sidebar">Quaerat eligendi dolores autem omnis sed</a></h3>
                                         <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
                                     </div>
                                 </div>
@@ -1892,13 +1856,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="slide-item">
                                 <div class="inner-slide">
                                     <div class="blog-img img-hover_effect">
-                                        <a href="blog-details-left-sidebar.html">
+                                        <a href="blog-details-left-sidebar">
                                             <img src="assets/images/blog/large-size/2.jpg" alt="Uren's Blog Image">
                                         </a>
                                         <span class="post-date">15-09-19</span>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="blog-details-left-sidebar.html">Nulla voluptatum maiores dolorem nobis</a></h3>
+                                        <h3><a href="blog-details-left-sidebar">Nulla voluptatum maiores dolorem nobis</a></h3>
                                         <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
                                     </div>
                                 </div>
@@ -1906,13 +1870,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="slide-item">
                                 <div class="inner-slide">
                                     <div class="blog-img img-hover_effect">
-                                        <a href="blog-details-left-sidebar.html">
+                                        <a href="blog-details-left-sidebar">
                                             <img src="assets/images/blog/large-size/3.jpg" alt="Uren's Blog Image">
                                         </a>
                                         <span class="post-date">19-09-19</span>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="blog-details-left-sidebar.html">Laudantium minus excepturi expedita dolore</a></h3>
+                                        <h3><a href="blog-details-left-sidebar">Laudantium minus excepturi expedita dolore</a></h3>
                                         <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
                                     </div>
                                 </div>
@@ -1920,13 +1884,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="slide-item">
                                 <div class="inner-slide">
                                     <div class="blog-img img-hover_effect">
-                                        <a href="blog-details-left-sidebar.html">
+                                        <a href="blog-details-left-sidebar">
                                             <img src="assets/images/blog/large-size/4.jpg" alt="Uren's Blog Image">
                                         </a>
                                         <span class="post-date">16-09-19</span>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="blog-details-left-sidebar.html">Aliquam nihil dolorem beatae totam tempora</a></h3>
+                                        <h3><a href="blog-details-left-sidebar">Aliquam nihil dolorem beatae totam tempora</a></h3>
                                         <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
                                     </div>
                                 </div>
@@ -1934,13 +1898,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="slide-item">
                                 <div class="inner-slide">
                                     <div class="blog-img img-hover_effect">
-                                        <a href="blog-details-left-sidebar.html">
+                                        <a href="blog-details-left-sidebar">
                                             <img src="assets/images/blog/large-size/5.jpg" alt="Uren's Blog Image">
                                         </a>
                                         <span class="post-date">20-09-19</span>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="blog-details-left-sidebar.html">Reprehenderit illum iusto sit asperiores</a></h3>
+                                        <h3><a href="blog-details-left-sidebar">Reprehenderit illum iusto sit asperiores</a></h3>
                                         <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
                                     </div>
                                 </div>
@@ -1948,13 +1912,13 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="slide-item">
                                 <div class="inner-slide">
                                     <div class="blog-img img-hover_effect">
-                                        <a href="blog-details-left-sidebar.html">
+                                        <a href="blog-details-left-sidebar">
                                             <img src="assets/images/blog/large-size/6.jpg" alt="Uren's Blog Image">
                                         </a>
                                         <span class="post-date">25-09-19</span>
                                     </div>
                                     <div class="blog-content">
-                                        <h3><a href="blog-details-left-sidebar.html">Corrupti, dolore tempore totam voluptate</a></h3>
+                                        <h3><a href="blog-details-left-sidebar">Corrupti, dolore tempore totam voluptate</a></h3>
                                         <p>Maiores accusamus unde nulla quaerat deserunt, beatae molestias blanditiis aut recusandae saepe, quis, culpa voluptatum?</p>
                                     </div>
                                 </div>
@@ -2250,9 +2214,9 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="uren-group_btn">
                                         <ul>
-                                            <li><a href="cart.html" class="add-to_cart">Cart To Cart</a></li>
-                                            <li><a href="cart.html"><i class="ion-android-favorite-outline"></i></a></li>
-                                            <li><a href="cart.html"><i class="ion-ios-shuffle-strong"></i></a></li>
+                                            <li><a href="cart" class="add-to_cart">Cart To Cart</a></li>
+                                            <li><a href="cart"><i class="ion-android-favorite-outline"></i></a></li>
+                                            <li><a href="cart"><i class="ion-ios-shuffle-strong"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="uren-tag-line">

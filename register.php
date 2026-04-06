@@ -14,15 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validation
     if ($username === '' || strlen($username) < 2) {
-        $errors[] = "Nom d'utilisateur invalide.";
+        $errors[] = "Nom invalide.";
     }
 
-    $phone_normalized = preg_replace('/[^\d+]/', '', $phone);
-    if ($phone_normalized === '' || strlen($phone_normalized) < 6) {
-        $errors[] = "Numéro de téléphone invalide.";
+    $phone = preg_replace('/[^\d]/', '', $phone);
+    if (strlen($phone) < 6) {
+        $errors[] = "Téléphone invalide.";
     }
 
-    if ($password === '' || strlen($password) < 6) {
+    if (strlen($password) < 6) {
         $errors[] = "Mot de passe trop court (6 caractères min).";
     }
 
@@ -30,36 +30,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Les mots de passe ne correspondent pas.";
     }
 
-    // Si pas d'erreurs
+    // Insertion
     if (empty($errors)) {
 
-        // Vérifier si le téléphone existe
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE phone = ?");
-        $stmt->execute([$phone_normalized]);
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE phone=?");
+        $stmt->execute([$phone]);
 
         if ($stmt->fetch()) {
-            $errors[] = "Ce numéro est déjà utilisé.";
+            $errors[] = "Téléphone déjà utilisé.";
         } else {
 
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $hash = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $pdo->prepare("
                 INSERT INTO users (username, phone, password)
                 VALUES (?, ?, ?)
             ");
 
-            if ($stmt->execute([$username, $phone_normalized, $password_hash])) {
-                $success = "Inscription réussie ✔";
+            if ($stmt->execute([$username, $phone, $hash])) {
 
-                // Option auto login
-                /*
+                // 🔥 AUTO LOGIN
                 $_SESSION['user_id'] = $pdo->lastInsertId();
                 $_SESSION['username'] = $username;
-                $_SESSION['phone'] = $phone_normalized;
-                $_SESSION['role'] = 'user';
+
                 header("Location: index.php");
                 exit;
-                */
             } else {
                 $errors[] = "Erreur serveur.";
             }
@@ -67,88 +62,135 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!doctype html>
-<html lang="fr">
+<html class="no-js" lang="fr">
+
 <head>
-    <meta charset="utf-8">
-    <title>Inscription | Auto Market</title>
+<meta charset="utf-8">
+<title>Inscription | AutoMarket</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+<link rel="stylesheet" href="assets/css/style.css">
 
-    <style>
-        body { background:#f4f4f4; }
-        .box {
-            max-width:450px;
-            margin:50px auto;
-            background:white;
-            padding:25px;
-            border-radius:8px;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-        }
-    </style>
+<style>
+.position-relative span {
+    position:absolute;
+    right:10px;
+    top:38px;
+    cursor:pointer;
+}
+</style>
+
 </head>
 
-<body>
+<body class="template-color-1">
 
-<div class="box">
+<div class="main-wrapper">
 
-    <h3 class="text-center mb-4">Créer un compte</h3>
+<!-- 🔝 HEADER (optionnel include) -->
 
-    <!-- erreurs -->
-    <?php if (!empty($errors)): ?>
-        <div class="alert alert-danger">
+<!-- 🧭 BREADCRUMB -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2>Inscription</h2>
             <ul>
-                <?php foreach ($errors as $e): ?>
-                    <li><?= htmlspecialchars($e) ?></li>
-                <?php endforeach; ?>
+                <li><a href="index.php">Accueil</a></li>
+                <li class="active">Créer un compte</li>
             </ul>
         </div>
-    <?php endif; ?>
-
-    <!-- succès -->
-    <?php if ($success): ?>
-        <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
-    <?php endif; ?>
-
-    <form method="post">
-
-        <div class="mb-3">
-            <input type="text" name="username" class="form-control"
-                   placeholder="Nom d'utilisateur"
-                   value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required>
-        </div>
-
-        <div class="mb-3">
-            <input type="tel" name="phone" class="form-control"
-                   placeholder="770000000"
-                   value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>" required>
-        </div>
-
-        <div class="mb-3">
-            <input type="password" name="password" class="form-control"
-                   placeholder="Mot de passe" required>
-        </div>
-
-        <div class="mb-3">
-            <input type="password" name="password_confirm" class="form-control"
-                   placeholder="Confirmer mot de passe" required>
-        </div>
-
-        <button class="btn btn-dark w-100">S'inscrire</button>
-
-    </form>
-
-    <div class="text-center mt-3">
-        <a href="login.php">Déjà un compte ? Se connecter</a>
     </div>
+</div>
 
-    <div class="text-center mt-2">
-        <a href="index.php" class="btn btn-secondary mt-2">⬅ Retour accueil</a>
-    </div>
+<!-- 🔐 REGISTER -->
+<div class="uren-login-register_area">
+<div class="container">
+<div class="row justify-content-center">
+
+<div class="col-lg-6">
+
+<form method="post">
+<div class="login-form">
+
+<h4 class="login-title text-center">Créer un compte</h4>
+
+<!-- erreurs -->
+<?php if (!empty($errors)): ?>
+<div class="alert alert-danger">
+<?php foreach ($errors as $e): ?>
+<div><?= htmlspecialchars($e) ?></div>
+<?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<div class="row">
+
+<div class="col-12 mb--20">
+<label>Nom d'utilisateur</label>
+<input type="text" name="username"
+value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+required>
+</div>
+
+<div class="col-12 mb--20">
+<label>Téléphone</label>
+<input type="text" name="phone"
+placeholder="770000000"
+value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
+required>
+</div>
+
+<div class="col-md-6 position-relative mb--20">
+<label>Mot de passe</label>
+<input type="password" name="password" id="password" required>
+<span onclick="togglePassword('password', this)">👁️</span>
+</div>
+
+<div class="col-md-6 position-relative mb--20">
+<label>Confirmer</label>
+<input type="password" name="password_confirm" id="password_confirm" required>
+<span onclick="togglePassword('password_confirm', this)">👁️</span>
+</div>
+
+<div class="col-12">
+<button class="uren-register_btn w-100">S'inscrire</button>
+</div>
 
 </div>
+
+<div class="text-center mt-3">
+<a href="login.php">Déjà un compte ? Se connecter</a>
+</div>
+
+</div>
+</form>
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- JS -->
+<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+
+<script>
+function togglePassword(id, el){
+    let input = document.getElementById(id);
+
+    if(input.type === "password"){
+        input.type = "text";
+        el.textContent = "🙈";
+    } else {
+        input.type = "password";
+        el.textContent = "👁️";
+    }
+}
+</script>
 
 </body>
 </html>

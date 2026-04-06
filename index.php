@@ -167,30 +167,78 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <li class=""><a href="javascript:void(0)">Compte <i
                                                 class="ion-ios-arrow-down"></i></a>
                                             <ul class="hm-dropdown">
-                                                <li><a href="login.php">Login | Register</a></li>
-                                                
+
+                                            <?php if (isset($_SESSION['user_id'])): ?>
+
+                                                <li>
+                                                    <a href="dashboard.php">👤 Mon compte</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="logout.php">🚪 Déconnexion</a>
+                                                </li>
+
+                                            <?php else: ?>
+
+                                                <li>
+                                                    <a href="login.php">Login | Register</a>
+                                                </li>
+
+                                            <?php endif; ?>
+
                                             </ul>
-                                        </li>
-                                        <li class=""><a href="contact">Contact</a></li>
-                                       
+                                        </li>                                       
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="custom-setting_col col-12 d-none d-lg-block">
                             <div class="ht-right_area">
-                                <div class="ht-menu">
-                                    <ul>
-                                       
-                                        <li><a href="my-account"><span class="fa fa-user"></span> <span>My
-                                                Account</span><i class="fa fa-chevron-down"></i></a>
-                                            <ul class="ht-dropdown ht-my_account">
-                                                <li><a href="register.php">Register</a></li>
-                                                <li class="active"><a href="login.php">Login</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
+                               
+
+                                    <div class="ht-menu">
+                                        <ul>
+
+                                            <li>
+                                                <a href="#">
+                                                    <span class="fa fa-user"></span> 
+                                                    <span>
+                                                        <?= isset($_SESSION['user_id']) 
+                                                            ? htmlspecialchars($_SESSION['username'] ?? 'Mon compte') 
+                                                            : 'My Account' ?>
+                                                    </span>
+                                                    <i class="fa fa-chevron-down"></i>
+                                                </a>
+
+                                                <ul class="ht-dropdown ht-my_account">
+
+                                                    <?php if (isset($_SESSION['user_id'])): ?>
+
+                                                        <li>
+                                                            <a href="dashboard.php">Dashboard</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="logout.php">Déconnexion</a>
+                                                        </li>
+
+                                                    <?php else: ?>
+
+                                                        <li>
+                                                            <a href="register.php">Register</a>
+                                                        </li>
+
+                                                        <li class="active">
+                                                            <a href="login.php">Login</a>
+                                                        </li>
+
+                                                    <?php endif; ?>
+
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
                             </div>
                         </div>
                         <div class="custom-search_col col-12 d-none d-md-block d-lg-none">
@@ -226,11 +274,27 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <li class=""><a href="javascript:void(0)">Compte <i
                                                 class="ion-ios-arrow-down"></i></a>
                                             <ul class="hm-dropdown">
-                                                <li><a href="login.php">Login | Register</a></li>
-                                                
-                                            </ul>
+
+                                                <?php if (isset($_SESSION['user_id'])): ?>
+
+                                                    <li>
+                                                        <a href="dashboard.php">👤 Mon compte</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="logout.php">🚪 Déconnexion</a>
+                                                    </li>
+
+                                                <?php else: ?>
+
+                                                    <li>
+                                                        <a href="login.php">Login | Register</a>
+                                                    </li>
+
+                                                <?php endif; ?>
+
+                                                </ul>
                                         </li>
-                                        <li class=""><a href="contact">Contact</a></li>
                                        
                                     </ul>
                                 </nav>
@@ -294,31 +358,73 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <li class=""><a href="javascript:void(0)">Compte <i
                                                 class="ion-ios-arrow-down"></i></a>
                                             <ul class="hm-dropdown">
-                                                <li><a href="login.php">Login | Register</a></li>
-                                                
-                                            </ul>
-                                        </li>
-                                        <li class=""><a href="contact">Contact</a></li>
-                                       
+
+                                                <?php if (isset($_SESSION['user_id'])): ?>
+
+                                                    <li>
+                                                        <a href="dashboard.php">👤 Mon compte</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="logout.php">🚪 Déconnexion</a>
+                                                    </li>
+
+                                                <?php else: ?>
+
+                                                    <li>
+                                                        <a href="login.php">Login | Register</a>
+                                                    </li>
+
+                                                <?php endif; ?>
+
+                                                </ul>
+                                        </li>                                       
                                     
                             </ul>
                         </nav>
+                      
+
                         <nav class="offcanvas-navigation user-setting_area">
                             <ul class="mobile-menu">
-                                <li class="menu-item-has-children active"><a href="javascript:void(0)"><span
-                                        class="mm-text">User
-                                        Setting</span></a>
+                                <li class="menu-item-has-children active">
+                                    <a href="javascript:void(0)">
+                                        <span class="mm-text">
+                                            <?= isset($_SESSION['user_id']) ? 'Mon compte' : 'User Setting' ?>
+                                        </span>
+                                    </a>
+
                                     <ul class="sub-menu">
-                                        <li>
-                                            <a href="my-account">
-                                                <span class="mm-text">My Account</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="login.php">
-                                                <span class="mm-text">Login | Register</span>
-                                            </a>
-                                        </li>
+
+                                        <?php if (isset($_SESSION['user_id'])): ?>
+
+                                            <li>
+                                                <a href="dashboard.php">
+                                                    <span class="mm-text">Dashboard</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="logout.php">
+                                                    <span class="mm-text">Déconnexion</span>
+                                                </a>
+                                            </li>
+
+                                        <?php else: ?>
+
+                                            <li>
+                                                <a href="login.php">
+                                                    <span class="mm-text">Login</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="register.php">
+                                                    <span class="mm-text">Register</span>
+                                                </a>
+                                            </li>
+
+                                        <?php endif; ?>
+
                                     </ul>
                                 </li>
                             </ul>
@@ -543,7 +649,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="single-product">
 
                         <div class="product-img">
-                            <a href="product.php?id=<?= $p['id'] ?>">
+                            <a href="product_details.php?id=<?= $p['id'] ?>">
 
                                 <?php if (!empty($p['main_image'])): ?>
                                     <img class="primary-img"
@@ -561,7 +667,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="product-desc_info">
 
                                 <h6 class="product-name">
-                                    <a href="product.php?id=<?= $p['id'] ?>">
+                                    <a href="product_details.php?id=<?= $p['id'] ?>">
                                         <?= htmlspecialchars($p['name']) ?>
                                     </a>
                                 </h6>
@@ -2061,11 +2167,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <div class="payment">
-                                    <a href="#">
-                                        <img src="assets/images/footer/payment/1.png" alt="Uren's Payment Method">
-                                    </a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -2073,7 +2175,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
         <!-- Uren's Footer Area End Here -->
-        <!-- Begin Uren's Modal Area -->
+        <!-- Begin Uren's Modal Area 
         <div class="modal fade modal-wrapper" id="exampleModalCenter">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -2261,7 +2363,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-        <!-- Uren's Modal Area End Here -->
+         Uren's Modal Area End Here -->
 
     </div>
 

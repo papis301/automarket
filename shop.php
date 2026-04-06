@@ -132,7 +132,7 @@ Aucun produit trouvé
 <div class="single-product">
 
 <div class="product-img">
-<a href="product.php?id=<?= $p['id'] ?>">
+<a href="product_details.php?id=<?= $p['id'] ?>">
 
 <?php if (!empty($p['main_image'])): ?>
 <img class="primary-img" src="<?= $p['main_image'] ?>">
@@ -152,7 +152,7 @@ Aucun produit trouvé
 <div class="product-desc_info">
 
 <h6>
-<a class="product-name" href="product.php?id=<?= $p['id'] ?>">
+<a class="product-name" href="product_details.php?id=<?= $p['id'] ?>">
 <?= htmlspecialchars($p['name']) ?>
 </a>
 </h6>

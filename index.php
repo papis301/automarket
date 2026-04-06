@@ -2082,7 +2082,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <li class="uren-phone"><span>+221 76 648 74 20
                                         SN:</span> <a href="tel://+221766487420">+221 76 648 74 20</a>
                                         </li>
-                                        <li class="uren-email"><span>Email:</span> <a href="mailto://info@yourdomain.com">info@yourdomain.com</a></li>
+                                        <!-- <li class="uren-email"><span>Email:</span> <a href="mailto://info@yourdomain.com">info@yourdomain.com</a></li> -->
                                     </ul>
                                 </div>
                                 <div class="uren-social_link">

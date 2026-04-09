@@ -43,15 +43,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $pdo->prepare("
-                INSERT INTO users (username, phone, password)
-                VALUES (?, ?, ?)
+                INSERT INTO users (username, phone, password, role)
+                VALUES (?, ?, ?, ?)
             ");
 
-            if ($stmt->execute([$username, $phone, $hash])) {
+            if ($stmt->execute([$username, $phone, $hash, 'user'])) {
 
                 // 🔥 AUTO LOGIN
                 $_SESSION['user_id'] = $pdo->lastInsertId();
                 $_SESSION['username'] = $username;
+                $_SESSION['role'] = 'user';
 
                 header("Location: index.php");
                 exit;

@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!doctype html>
 <html lang="fr">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <title>Connexion | AutoMarket</title>
 
@@ -54,6 +55,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     top:38px;
     cursor:pointer;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .login-form {
+        padding: 15px;
+    }
+
+    .login-title {
+        font-size: 20px;
+    }
+
+    input {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .uren-login_btn {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .breadcrumb-content h2 {
+        font-size: 22px;
+    }
+
+    .breadcrumb-content ul {
+        font-size: 12px;
+    }
+
+}
 </style>
 
 </head>
@@ -64,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- 🧭 BREADCRUMB -->
 <div class="breadcrumb-area">
-    <div class="container">
+    <div class="container px-2 px-md-4">
         <div class="breadcrumb-content">
             <h2>Connexion</h2>
             <ul>
@@ -77,10 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- 🔐 LOGIN -->
 <div class="uren-login-register_area">
-<div class="container">
+<div class="container px-2 px-md-4">
 <div class="row justify-content-center">
 
-<div class="col-lg-6">
+<div class="col-lg-6 col-md-8 col-12">
 
 <form method="post">
 <div class="login-form">
@@ -100,14 +132,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="col-12 mb--20">
 <label>Téléphone</label>
-<input type="text" name="phone"
+<input type="text" name="phone" inputmode="numeric"
 value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
 placeholder="770000000" required>
 </div>
 
 <div class="col-12 position-relative mb--20">
 <label>Mot de passe</label>
-<input type="password" name="password" id="password" required>
+<input type="password" name="password" id="password" required style="padding-right:40px;">
 <span onclick="togglePassword('password', this)">👁️</span>
 </div>
 

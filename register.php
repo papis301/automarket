@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Inscription | AutoMarket</title>
 
 <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
@@ -80,6 +81,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     right:10px;
     top:38px;
     cursor:pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .login-form {
+        padding: 15px;
+    }
+
+    .login-title {
+        font-size: 20px;
+    }
+
+    input {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .uren-register_btn {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .breadcrumb-content h2 {
+        font-size: 22px;
+    }
+
+    .breadcrumb-content ul {
+        font-size: 12px;
+    }
+
 }
 </style>
 

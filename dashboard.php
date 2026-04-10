@@ -23,6 +23,7 @@ $products = $stmt->fetchAll();
 <!doctype html>
 <html lang="fr">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <title>Mon Compte | AutoMarket</title>
 
@@ -34,6 +35,43 @@ $products = $stmt->fetchAll();
 .product-card img {
     height:180px;
     object-fit:cover;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .product-card img {
+        height:150px;
+    }
+
+    .nav.flex-column {
+        flex-direction: row !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    .nav.flex-column .nav-item {
+        display: inline-block;
+    }
+
+    .nav.flex-column .nav-link {
+        font-size: 12px;
+        padding: 6px 10px;
+        background: #f1f1f1;
+        border-radius: 6px;
+    }
+
+    .myaccount-dashboard p {
+        font-size: 14px;
+    }
+
+    .btn-sm {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
 }
 </style>
 
@@ -62,7 +100,7 @@ $products = $stmt->fetchAll();
 <div class="row">
 
 <!-- MENU GAUCHE -->
-<div class="col-lg-3">
+<div class="col-lg-3 col-12 mb-3">
 <ul class="nav flex-column">
 
 <li class="nav-item">
@@ -91,7 +129,7 @@ $products = $stmt->fetchAll();
 </div>
 
 <!-- CONTENU -->
-<div class="col-lg-9">
+<div class="col-lg-9 col-12">
 
 <div class="myaccount-dashboard mb-4">
 <p>
@@ -110,7 +148,7 @@ Aucun produit ajouté.
 
 <?php foreach($products as $p): ?>
 
-<div class="col-lg-4 col-md-6 mb-4">
+<div class="col-lg-4 col-md-6 col-6 mb-3">
 <div class="card product-card">
 
 <a href="product.php?id=<?= $p['id'] ?>">
@@ -125,7 +163,7 @@ Aucun produit ajouté.
 <?= number_format($p['price'],0,',',' ') ?> FCFA
 </p>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex flex-column flex-md-row gap-2">
 
 <a href="edit_product.php?id=<?= $p['id'] ?>"
 class="btn btn-primary btn-sm">

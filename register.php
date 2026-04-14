@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- 🧭 BREADCRUMB -->
 <div class="breadcrumb-area">
-    <div class="container">
+    <div class="container px-2 px-md-4">
         <div class="breadcrumb-content">
             <h2>Inscription</h2>
             <ul>
@@ -138,10 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- 🔐 REGISTER -->
 <div class="uren-login-register_area">
-<div class="container">
+<div class="container px-2 px-md-4">
 <div class="row justify-content-center">
 
-<div class="col-lg-6">
+<div class="col-lg-6 col-md-8 col-12">
 
 <form method="post">
 <div class="login-form">
@@ -168,21 +168,21 @@ required>
 
 <div class="col-12 mb--20">
 <label>Téléphone</label>
-<input type="text" name="phone"
+<input type="text" name="phone" inputmode="numeric"
 placeholder="770000000"
 value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
 required>
 </div>
 
-<div class="col-md-6 position-relative mb--20">
+<div class="col-md-6 col-12 position-relative mb--20">
 <label>Mot de passe</label>
-<input type="password" name="password" id="password" required>
+<input type="password" name="password" id="password" required style="padding-right:40px;">
 <span onclick="togglePassword('password', this)">👁️</span>
 </div>
 
-<div class="col-md-6 position-relative mb--20">
+<div class="col-md-6 col-12 position-relative mb--20">
 <label>Confirmer</label>
-<input type="password" name="password_confirm" id="password_confirm" required>
+<input type="password" name="password_confirm" id="password_confirm" required style="padding-right:40px;">
 <span onclick="togglePassword('password_confirm', this)">👁️</span>
 </div>
 

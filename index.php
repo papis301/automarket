@@ -654,7 +654,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php if (!empty($p['main_image'])): ?>
                                     <img class="primary-img"
                                          src="<?= $p['main_image'] ?>"
-                                         alt="<?= htmlspecialchars($p['name']) ?>">
+                                         alt="<?= htmlspecialchars($p['title']) ?>">
                                 <?php else: ?>
                                     <img class="primary-img"
                                          src="assets/images/no-image.png">
@@ -668,7 +668,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <h6 class="product-name">
                                     <a href="product_details.php?id=<?= $p['id'] ?>">
-                                        <?= htmlspecialchars($p['name']) ?>
+                                        <?= htmlspecialchars($p['title']) ?>
                                     </a>
                                 </h6>
 

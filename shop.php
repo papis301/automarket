@@ -153,8 +153,7 @@ Aucun produit trouvé
 
 <h6>
 <a class="product-name" href="product_details.php?id=<?= $p['id'] ?>">
-<?= htmlspecialchars($p['name']) ?>
-</a>
+<?= htmlspecialchars($p['title'] ?? '') ?></a>
 </h6>
 
 <div class="price-box">

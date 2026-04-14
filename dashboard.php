@@ -151,7 +151,7 @@ Aucun produit ajouté.
 <div class="col-lg-4 col-md-6 col-6 mb-3">
 <div class="card product-card">
 
-<a href="product.php?id=<?= $p['id'] ?>">
+<a href="product_details.php?id=<?= $p['id'] ?>">
 <img src="<?= $p['main_image'] ?? 'assets/no-image.png' ?>">
 </a>
 
